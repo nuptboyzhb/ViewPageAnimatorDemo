@@ -11,20 +11,8 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.NoTitle;
 import org.androidannotations.annotations.ViewById;
 
-import com.ToxicBakery.viewpager.transforms.AccordionTransformer;
-import com.ToxicBakery.viewpager.transforms.BackgroundToForegroundTransformer;
-import com.ToxicBakery.viewpager.transforms.CubeInTransformer;
-import com.ToxicBakery.viewpager.transforms.CubeOutTransformer;
-import com.ToxicBakery.viewpager.transforms.DepthPageTransformer;
-import com.ToxicBakery.viewpager.transforms.FlipHorizontalTransformer;
-import com.ToxicBakery.viewpager.transforms.RotateDownTransformer;
-import com.ToxicBakery.viewpager.transforms.RotateUpTransformer;
-import com.ToxicBakery.viewpager.transforms.StackTransformer;
-import com.ToxicBakery.viewpager.transforms.TabletTransformer;
-import com.ToxicBakery.viewpager.transforms.ZoomOutSlideTransformer;
-import com.ToxicBakery.viewpager.transforms.ZoomOutTranformer;
-
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 /*
  *@author: ZhengHaibo  
@@ -39,10 +27,14 @@ public class ImageLoadingPageGridActivity extends FragmentActivity{
 	@ViewById
 	ViewPager pager;
 	
+	@ViewById
+	PagerTabStrip pts;
+	
 	PageAdapter adapter;
 	
 	@AfterViews
 	void afterViews(){
+		pts.setTabIndicatorColorResource(R.color.green_complete);
 		adapter = new PageAdapter(getSupportFragmentManager(),ImageLoadingPageGridActivity.this);
 		pager.setAdapter(adapter);
 //		pager.setPageTransformer(true,new CubeOutTransformer()); //Yes

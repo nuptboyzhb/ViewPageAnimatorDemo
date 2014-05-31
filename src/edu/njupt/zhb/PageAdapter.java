@@ -7,6 +7,7 @@
 package edu.njupt.zhb;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,7 +15,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.ViewGroup;
 
@@ -66,7 +69,11 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 		myDrawable.setBounds(0, 0, myDrawable.getIntrinsicWidth(),
 				myDrawable.getIntrinsicHeight());
 		ImageSpan span = new ImageSpan(myDrawable, ImageSpan.ALIGN_BASELINE);
-		ssb.setSpan(span, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
+		ForegroundColorSpan fcs = new ForegroundColorSpan(Color.GREEN);//字体颜色设置为绿色
+		ssb.setSpan(span, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);//设置图标
+		ssb.setSpan(fcs, 1, ssb.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);//设置字体颜色
+		ssb.setSpan(new RelativeSizeSpan(1.2f), 1, ssb.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 		return ssb;
 	}
 
